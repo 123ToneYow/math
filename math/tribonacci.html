@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Tribonacci Sequence Calculator</title>
+    <script>
+        function calculateTribonacci() {
+            var n = document.getElementById('n').value;
+            if (n < 1 || isNaN(n)) {
+                alert("Please enter a positive integer.");
+                return;
+            }
+            var sequence = [0, 1, 1];
+            for (var i = 3; i < n; i++) {
+                sequence.push(sequence[i-1] + sequence[i-2] + sequence[i-3]);
+            }
+            document.getElementById('result').innerHTML = "Result: " + sequence.join(", ");
+
+            // Add solution
+            var solution = "Solution: <br>";
+            solution += "The Tribonacci sequence is a series of numbers where a number is the sum of the three preceding ones, usually starting with 0, 1, and 1.<br>";
+            solution += "Here's how the first " + n + " numbers are calculated:<br>";
+            for (var i = 3; i < n; i++) {
+                solution += "Number " + i + " in the sequence is " + sequence[i] + " (which is " + sequence[i-1] + " + " + sequence[i-2] + " + " + sequence[i-3] + ").<br>";
+            }
+            document.getElementById('solution').innerHTML = solution;
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="calculator">
+                <h2>Tribonacci Sequence Calculator</h2>
+                    <br>
+                    <label for="n">Enter the number of terms:</label><br>
+                    <br>
+                    <input type="number" id="n" name="n"><br>
+                    <br>
+                    <input type="button" value="Calculate" onclick="calculateTribonacci()">
+                </form>
+                <p id="result"></p>
+                <p id="solution"></p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Circular Permutation</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function factorial(n) {
+            return (n != 1) ? n * factorial(n - 1) : 1;
+        }
+
+        function calculateCircularPermutation() {
+            var n = document.getElementById('n').value;
+            if (n < 1 || isNaN(n)) {
+                alert("Please enter a positive integer.");
+                return;
+            }
+            var result = factorial(n-1);
+            document.getElementById('result').innerHTML = "Result: " + result;
+            var solution = "Solution: <br>";
+            solution += "(n-1)! = (" + n + "-1)! = " + factorial(n-1);
+            document.getElementById('solution').innerHTML = solution;
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="calculator">
+                <h2>Circular Permutation</h2>
+                <form>
+                    <input type="number" placeholder="Value of n" id="n" name="n"><br>
+                    <input type="button" value="Calculate" onclick="calculateCircularPermutation()">
+                <p id="result"></p>
+                <p id="solution"></p>
+            </form>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Permutation Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function factorial(n) {
+            return (n != 1) ? n * factorial(n - 1) : 1;
+        }
+
+        function calculatePermutation() {
+            var n = Number(document.getElementById('n').value);
+            var r = Number(document.getElementById('r').value);
+            console.log('Calculating permutation for n=' + n + ' and r=' + r);
+            if (n < r || n < 1 || r < 1 || isNaN(n) || isNaN(r)) {
+                alert("Please enter valid positive integers for n and r where n >= r.");
+                return;
+            }
+            var result = factorial(n) / factorial(n-r);
+            console.log('Result: ' + result);
+            document.getElementById('result').innerHTML = "Result: " + result;
+
+            var solution = "Solution: <br>";
+            solution += "n! = " + n + "! = " + factorial(n) + "<br>";
+            solution += "(n-r)! = (" + n + "-" + r + ")! = " + factorial(n-r) + "<br>";
+            solution += "P(n, r) = n! / (n-r)! = " + factorial(n) + " / " + factorial(n-r) + " = " + result;
+            document.getElementById('solution').innerHTML = solution;
+        }
+    </script>
+</head>
+<body>
+    <section>
+    <div class="container">
+        <div class="calculator">
+            <h2>PERMUTATION</h2>
+            <form>
+                <input type="number" placeholder="Value of n" id="n" name="n"><br>
+                <br>
+                <input type="number" placeholder="Value of r" id="r" name="r"><br>
+                <br>
+                <input type="button" value="Calculate" onclick="calculatePermutation()">
+
+                <p id="result"></p>
+                <p id="solution"></p>
+            </form>
+        </div>
+    </div>     
+    </section>
+</body>
+</html>

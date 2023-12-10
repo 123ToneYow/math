@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Collatz Sequence Calculator</title>
+    <script>
+        function calculateCollatz() {
+            var n = document.getElementById('n').value;
+            if (n < 1 || isNaN(n)) {
+                alert("Please enter a positive integer.");
+                return;
+            }
+            var sequence = [n];
+            while (n != 1) {
+                if (n % 2 == 0) {
+                    n = n / 2;
+                } else {
+                    n = 3 * n + 1;
+                }
+                sequence.push(n);
+            }
+            document.getElementById('result').innerHTML = "Result: " + sequence.join(", ");
+
+            // Add solution
+            var solution = "Solution: <br>";
+            solution += "Start with number " + document.getElementById('n').value + ".<br>";
+            solution += "Then, for each number in the sequence:<br>";
+            solution += "If the number is even, divide it by 2.<br>";
+            solution += "If the number is odd, multiply it by 3 and add 1.<br>";
+            solution += "Repeat this process until you reach 1.<br>";
+            document.getElementById('solution').innerHTML = solution;
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="calculator">
+                <h2>Collatz Sequence Calculator</h2>
+                <form>
+                    <label for="n">Enter a number:</label><br>
+                    <br>
+                    <input type="number" id="n" name="n"><br>
+                    <br>
+                    <input type="button" value="Calculate" onclick="calculateCollatz()">
+                </form>
+                <p id="result"></p>
+                <p id="solution"></p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
